@@ -18,6 +18,6 @@ Si no tienes computadora o estás sin electricidad, puedes entregar directamente
 
 1. Entra a la carpeta `estudiantes/` y luego haz clic en **tu subcarpeta**.
 2. Arriba a la derecha, haz clic en **`Add file`** (Añadir archivo).
-   * Elige **`Create new file`** si vas a pegar el código directamente en el editor web. Nombra tu archivo como `tarea1.py`.
+   * Elige **`Create new file`** si vas a pegar el código directamente en el editor web. Nombra tu archivo conforme a lo indicado en el archivo `instrucciones` ubicado en la carpeta `asignaciones` respectiva.
    * Elige **`Upload files`** si ya tienes el archivo `.py` o `.txt` descargado en tu teléfono.
 3. Baja hasta el final de la página y haz clic en el botón verde **`Commit changes`** para guardar tu entrega.
