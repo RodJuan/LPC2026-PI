@@ -1,4 +1,4 @@
-# Lenguaje de Programación Científica (LPC) - 2026-PI 🏛️
+# Lenguaje de Programación Científica (LPC) - 2026-PI 
 
 Bienvenidos al repositorio oficial del curso. Aquí gestionaremos las asignaciones y proyectos del semestre.
 
