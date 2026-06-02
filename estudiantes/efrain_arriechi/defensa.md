@@ -1,29 +1,36 @@
 # defensa.md
 
-1. ¿Por qué la curva de Satisfacción (ISN) **no** se queda completamente plana?
+1. ¿Por qué la curva de Satisfacción (ISN) se queda completamente plana?
+   
+Al observar la gráfica, la línea punteada naranja del ISN se mantiene horizontal
+en exactamente 42.9 % durante toda la simulación, desde Wf = 1.0 hasta Wf = 1.5.
 
-Al ejecutar la simulación con los datos reales de la sección, la curva del ISN 
-experimenta un salto visible en lugar de mantenerse constante.
-Esto ocurre porque en nuestra sección hay dos bloques de horarios los cuales compiten por ser el
-ganador: `Jueves 12-14` y `Jueves 10-12` (este ultimo que toma ventaja por el peso del voto foraneo).
+Esto ocurre porque el bloque ganador es siempre el mismo: Jue_12-14 gana en
+los 11 pasos de la simulación sin excepción. Como el algoritmo nunca cambia de
+bloque, el grupo de estudiantes que puede asistir a ese horario es idéntico en
+cada iteración, y también lo es el subgrupo que además lo tenía como preferencia.
 
-Cuando el algoritmo cambia de bloque ganador, también cambia el conjunto de
-estudiantes que asisten y los que consiguen su preferencia, por lo que el numerador
-y el denominador del ISN varían de golpe, produciendo el escalón que se observa
-en la gráfica.
-
-En resumen: el ISN es plano dentro de cada bloque ganador, pero da un salto
-cada vez que el cambio de peso hace que el algoritmo prefiera un bloque diferente.
-Si hubiera un único bloque dominante en toda la simulación (como es el caso teórico
-ideal), la curva sí sería completamente horizontal.
-
+Al dividir siempre los mismos números, el ISN produce siempre el mismo porcentaje.
+En otras palabras: la línea plana es evidencia de estabilidad. Con un peso justo
+de máximo 1.5, los foráneos no tienen suficiente influencia para desplazar el
+consenso hacia otro bloque, y por eso la satisfacción no salta ni cae en ningún
+momento de la simulación.
 
 
 2. Bloque horario seleccionado como consenso definitivo
 
-El algoritmo eligió de manera consistente (en la mayor parte de la simulación) el
-bloque:
+El algoritmo seleccionó Jue_12-14 — Jueves de 12:00 a 14:00 como el
+consenso definitivo de la sección.
 
-Jueves de 10:00 a 12:00**
+Este bloque obtuvo el Utotal más alto en toda la simulación: −8.00 con
+Wf = 1.0, bajando gradualmente hasta −11.00 con Wf = 1.5. La tendencia
+descendente de la curva índigo se explica porque Roiner Rosario es foráneo y
+no tiene disponibilidad en ningún bloque, por lo que su penalización de −1.5
+se multiplica por Wf y pesa más a medida que el peso foráneo sube — arrastrando
+el Utotal hacia abajo en todos los bloques por igual, sin cambiar cuál es el
+mejor.
 
-aumenta a partir de cierto punto en la simulación.
+A pesar de que el Utotal es negativo en todo el rango, Jue_12-14 es
+consistentemente el menos negativo de los 20 bloques evaluados, lo que lo
+convierte en la opción que minimiza la exclusión y maximiza el bienestar
+colectivo de la sección.
