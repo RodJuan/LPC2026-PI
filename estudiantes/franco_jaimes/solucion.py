@@ -129,14 +129,30 @@ bloque_final = frecuencia.most_common(1)[0][0]
 print(f"\nBloque horario que más veces resultó ganador: {bloque_final}")
 
 # ------------------------------------------------------------
-# 7. GRÁFICA BIFOCAL
+# 7. NUEVA GRÁFICA LINEAL (BLOQUE CONSENSO FIJO)
 # ------------------------------------------------------------
+
+# Identificar el bloque que más veces resultó ganador (consenso definitivo)
+from collections import Counter
+frecuencia = Counter(mejores_bloques)
+bloque_consenso = frecuencia.most_common(1)[0][0]
+print(f"\nBloque horario que más veces resultó ganador: {bloque_consenso}")
+
+# Calcular U_total e ISN únicamente para ese bloque fijo en cada peso
+U_fijo = []
+ISN_fijo = []
+for w in pesos:
+    U, isn = calcular_U_y_ISN(bloque_consenso, w)
+    U_fijo.append(U)
+    ISN_fijo.append(isn)
+
+# Crear gráfica con doble eje Y
 fig, ax1 = plt.subplots(figsize=(10, 6))
 
 color_U = 'indigo'
 ax1.set_xlabel('Peso del foráneo ($W_f$)')
 ax1.set_ylabel('Bienestar General ($U_{total}$)', color=color_U)
-ax1.plot(pesos, U_ganadores, color=color_U, linewidth=2, label='$U_{total}$ (Utilidad)')
+ax1.plot(pesos, U_fijo, color=color_U, linewidth=2, label='$U_{total}$ (Utilidad)')
 ax1.tick_params(axis='y', labelcolor=color_U)
 ax1.grid(True, alpha=0.3)
 
@@ -144,7 +160,7 @@ ax1.grid(True, alpha=0.3)
 ax2 = ax1.twinx()
 color_ISN = 'orange'
 ax2.set_ylabel('Índice de Satisfacción Neta ($ISN$ %)', color=color_ISN)
-ax2.plot(pesos, ISN_ganadores, color=color_ISN, linestyle='dashed', linewidth=2, label='$ISN$ (Satisfacción)')
+ax2.plot(pesos, ISN_fijo, color=color_ISN, linestyle='dashed', linewidth=2, label='$ISN$ (Satisfacción)')
 ax2.tick_params(axis='y', labelcolor=color_ISN)
 ax2.set_ylim(0, 100)
 
@@ -153,8 +169,9 @@ lineas1, etiquetas1 = ax1.get_legend_handles_labels()
 lineas2, etiquetas2 = ax2.get_legend_handles_labels()
 ax1.legend(lineas1 + lineas2, etiquetas1 + etiquetas2, loc='lower right')
 
-plt.title('Simulación de consenso horario: $U_{total}$ e $ISN$ vs $W_f$')
+plt.title(f'Relación lineal para el bloque consenso: {bloque_consenso}')
 plt.tight_layout()
 plt.savefig('grafica_consenso.png', dpi=150)
 plt.show()
 print("Gráfica guardada como grafica_consenso.png")
+
