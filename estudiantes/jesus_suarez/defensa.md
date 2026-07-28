@@ -17,11 +17,14 @@ Esto sucede porque la estructura del código introduce los tokens de todos los e
 más efectivo mediante la métrica U total, a su vez, se itera el valor Wf para determinar Si U Total puede mejorarse o al menos 
 observar su comportamiento en función de Wf. En cada uno de todos los bloques e iteraciones de los distintos valores de wf, el ganador
 siempre es el bloque Martes de 12:00 a 14:00.
+
 Por tanto, el Isn se mantiene plano en el tiempo porque siempre se itera bajo el mismo bloque, es decir, Isn no está en función de wf,
 sino del bloque, y al bloque nunca cambiar se mantiene constante en la gráfica.
 
 Jesús Suárez
+
 33435025
+
 Física
 
 
