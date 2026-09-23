@@ -1,0 +1,29 @@
+import base64
+import json
+
+lineas = [
+    '{"n": "Juan Pablo Ramirez", "f": true, "v": ["Lun_14-16", "Mar_14-16", "Mie_14-16", "Jue_14-16", "Vie_14-16"]}',
+    '{"n": "Luciano Palencia ", "f": false, "v_p": ["Lun_12-14", "Lun_14-16", "Mar_12-14", "Mar_14-16", "Jue_12-14"], "v_d": ["Lun_10-14", "Lun_14-16", "Mar_08-10"]}',
+    '{"n": "Samantha Parra", "f": true, "v_p": ["Lun_10-12", "Jue_08-10"], "v_d": ["Lun_10-12"]}',
+    '{"n": "Andrés Mendoza ", "f": true, "v_p": ["Mar_10-14"], "v_d": ["Mar_10-12"]}',
+    '{"n": "Eliezer Velasquez", "f": false, "v_p": ["Lun_08-10", "Lun_10-12", "Lun_10-14", "Lun_14-16", "Mie_08-10", "Mie_10-12", "Mie_12-14", "Mie_14-16", "Vie_08-10", "Vie_10-12", "Vie_12-14", "Vie_14-16"], "v_d": ["Mar_08-10", "Mar_10-12", "Mar_12-14", "Mar_14-16", "Jue_08-10", "Jue_10-12", "Jue_12-14", "Jue_14-16"]}',
+    '{"n": "Yariana Orozco", "f": false, "v_p": ["Lun_12-14", "Jue_10-12"], "v_d": ["Lun_10-14", "Jue_12-14"]}',
+    '{"n": "Denice Vilchez ", "f": true, "v_p": ["Jue_10-12"], "v_d": ["Jue_10-12"]}',
+    '{"n": "Franco Jaimes", "f": false, "v_p": ["Mar_08-10", "Mar_10-12", "Mar_12-14", "Mar_14-16", "Jue_12-14", "Vie_08-10"], "v_d": ["Mar_10-12", "Mar_12-14", "Mar_14-16", "Jue_10-14"]}',
+    '{"n": "Zarah Alvarado", "f": false, "v_p": ["Mie_14-16", "Jue_10-12"], "v_d": ["Mie_10-16", "Jue_10-12"]}',
+    '{"n": "Cebrián Iriarte", "f": false, "v_p": ["Mar_12-14", "Mar_14-16", "Jue_08-10", "Jue_10-12", "Vie_08-10", "Vie_10-12", "Vie_12-14", "Vie_14-16"], "v_d": ["Mar_14-16", "Jue_08-10", "Vie_08-10"]}',
+    '{"n": "Roiner Rosario ", "f": true, "v_p": ["Lun_12-14", "Mar_12-14"], "v_d": []}',
+    '{"n": "Mauro Melean ", "f": false, "v_p": ["Mar_08-10", "Mar_10-12", "Mie_10-12", "Mie_12-14"], "v_d": ["Mie_10-12", "Mie_12-14"]}',
+    '{"n": "Jesús Suárez", "f": false, "v_p": ["Lun_10-12", "Lun_12-14", "Mar_08-10", "Mar_10-12", "Mar_12-14", "Mie_12-14", "Jue_10-12", "Jue_12-14"], "v_d": ["Lun_10-12", "Lun_10-14", "Mar_08-10", "Mar_10-12", "Mar_12-14", "Jue_10-12", "Jue_12-14"]}',
+    '{"n": "Efrain Arrieche", "f": false, "v_p": ["Lun_10-12", "Lun_12-14", "Lun_14-16", "Mar_08-10", "Mar_10-12", "Mar_12-14", "Mar_14-16", "Jue_10-12", "Jue_12-14", "Jue_14-16"], "v_d": ["Lun_10-12", "Jue_10-12"]}',
+    '{"n": "Rebeca Hernandez ", "f": false, "v_p": ["Mar_12-14", "Jue_14-16"], "v_d": ["Mar_08-10", "Jue_12-14"]}',
+    '{"n": "Alveris Edmundo López lugo ", "f": false, "v": ["Lun_12-14", "Mar_14-16", "Mie_12-14", "Jue_12-14", "Vie_10-16"]}',
+    '{"n": "Juan Ramirez ", "f": false, "v_p": ["Lun_10-14", "Mar_08-10"], "v_d": ["Mie_12-14", "Jue_10-14", "Vie_12-14"]}',
+    '{"n": "Miranda Montero ", "f": false, "v_p": ["Mar_10-12", "Mie_10-12", "Jue_10-12", "Vie_10-12", "Vie_12-14"], "v_d": ["Lun_10-12", "Mar_12-14", "Mie_08-10", "Vie_10-12", "Vie_12-14"]}'
+]
+
+for linea in lineas:
+    # Asegurar que el JSON sea válido
+    json.loads(linea)
+    token = base64.b64encode(linea.encode('utf-8')).decode('utf-8')
+    print(token)
